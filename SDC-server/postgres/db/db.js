@@ -1,23 +1,25 @@
-const { Pool } = require('pg')
+const Sequelize = require('sequelize');
 
-const pool = new Pool()
+const connection = new Sequelize('navbar', 'postgres', 'password', {
+  host: 'localhost',
+  dialect: 'postgres',
+  logging: false,
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  }
+});
 
-pool.on('error', (err, client) => {
-console.error('Unexpected error on idle client', err)
-process.exit(-1)
-})
+connection
+  .authenticate()
+  .then(() => {
+    console.log('Connected to the database.');
+  })
+  .catch((err) => {
+    console.error('Unable to connect to the database:', err);
+  });
 
-pool.connect()
-.then(client => {
-  return client.query(
-    //read query
-  )
-    .then(res => {
-      client.release()
-      console.log(res.rows[0])
-    })
-    .catch(e => {
-      client.release()
-      console.log(err.stack)
-    })
-})
+module.exports = {
+  connection,
+};

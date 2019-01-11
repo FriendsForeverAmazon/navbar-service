@@ -40,4 +40,16 @@ const get = (req, res) => {
   }
 }
 
-module.exports = { get };
+const put = (req, res) => {
+
+}
+
+const post = (req, res) => {
+  
+}
+
+const remove = (req, res) => {
+  
+}
+
+module.exports = { get, put, post, remove };
