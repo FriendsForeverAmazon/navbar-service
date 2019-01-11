@@ -40,16 +40,78 @@ const get = (req, res) => {
   }
 }
 
-const put = (req, res) => {
-
+const create = (req, res) => {
+  const categoryParam = req.params.category;
+  const { query } = req.params;
+  Category.find({
+    category: 
+      categoryParam
+  })
+  .then(category => {
+    if (category) {
+      return Product.create({
+        categoryId: category.id,
+        name: 
+          new RegExp(query.toLowerCase(),'g')
+      })
+    }
+  })
+  .then(products => {
+    res.status(200).send({ products });
+  })
+  .catch(err => {
+    res.status(500).send({ err });
+  })
 }
 
-const post = (req, res) => {
-  
+const update = (req, res) => {
+  const categoryParam = req.params.category;
+  const oldProduct = req.params.oldProduct;
+  const newProduct = req.params.newProduct;
+  Category.find({
+    category: 
+      categoryParam
+  })
+  .then(category => {
+    if (category) {
+      return Product.update(
+        {name: oldProduct},
+        {
+          name: newProduct,
+          description: req.body
+        })
+    }
+  })
+  .then(products => {
+    res.status(200).send({ products });
+  })
+  .catch(err => {
+    res.status(500).send({ err });
+  })
 }
 
 const remove = (req, res) => {
-  
+  const categoryParam = req.params.category;
+  const { query } = req.params;
+  Category.find({
+    category: 
+      categoryParam
+  })
+  .then(category => {
+    if (category) {
+      return Product.deleteOne({
+        categoryId: category.id,
+        name: 
+          new RegExp(query.toLowerCase(),'g')
+      })
+    }
+  })
+  .then(products => {
+    res.status(200).send({ products });
+  })
+  .catch(err => {
+    res.status(500).send({ err });
+  })
 }
 
-module.exports = { get, put, post, remove };
+module.exports = { get, create, update, remove };
