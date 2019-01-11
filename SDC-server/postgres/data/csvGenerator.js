@@ -7,7 +7,7 @@ const categoryNames = ['electronics', 'clothes', 'games', 'appliances', 'books']
 
 const categories = categoryNames.map(category => { 
   let out = {category,image:''}
-  categoryStream.write(JSON.stringify(out));
+  categoryStream.write(JSON.stringify(out) + ',');
   return out;
 });
 
@@ -27,7 +27,7 @@ categories.forEach(async (category,index) => {
         name: faker.commerce.productName().toLowerCase(),
         description: faker.lorem.paragraph(),
         categoryId: index
-      }));
+      }) + ',');
     if (streamPromise instanceof Promise) {
       await streamPromise;
     }
