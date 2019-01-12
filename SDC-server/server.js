@@ -4,13 +4,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-//MONGO ROUTERS
-const categoriesRouter = require('./mongo/routes/category.routes');
-const productsRouter = require('./mongo/routes/product.routes');
-
-//POSTGRES ROUTERS
-// const categoriesRouter = require('./postgres/routes/category.routes');
-// const productsRouter = require('./postgres/routes/product.routes');
+const categoriesRouter = require('./routes/category.routes');
+const productsRouter = require('./routes/product.routes');
 
 const app = express();
 const PORT = 3003;
