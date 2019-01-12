@@ -41,3 +41,26 @@ From within the root directory:
 npm install
 ```
 
+## CRUD API
+
+### MongoDB Routes
+
+router.get('/:category/:query', productsController.get);
+router.post('/create/:category/:query', productsController.create);
+router.put('/update/:category/:oldProduct/:newProduct', productsController.update);
+router.delete('/delete/:category/:query', productsController.remove);
+router.get('/', categoriesController.getAll);
+router.post('/create/:category', categoriesController.create);
+router.put('/update/:category/:newCategory', categoriesController.update);
+router.delete('/delete/:category', categoriesController.remove);
+
+### PostgreSQL Routes
+
+router.get('/', categoriesController.getAll);
+router.post('/create/:category', categoriesController.create);
+router.put('/update/:category/:newCategory', categoriesController.update);
+router.delete('/delete/:category', categoriesController.remove);
+router.get('/:category/:query', productsController.get);
+router.post('/create/:category/:query', productsController.create);
+router.put('/update/:category/:oldProduct/:newProduct', productsController.update);
+router.delete('/delete/:category/:query', productsController.remove);

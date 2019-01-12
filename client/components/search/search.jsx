@@ -24,7 +24,7 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    // Setup listener for dropdown cliks
+    // Setup listener for dropdown clicks
     document.addEventListener('mousedown', this.handleOutsideClick, false);
 
     // Fetch categories

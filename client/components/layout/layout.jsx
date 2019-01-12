@@ -5,7 +5,7 @@ import Ad from '../ad/ad.jsx';
 import Links from '../links/links.jsx';
 import Location from '../location/location.jsx';;
 import Logo from '../logo/logo.jsx';
-import Search from '../Search/search.jsx';
+import Search from '../search/search.jsx';
 import Sidebar from '../sidebar/sidebar.jsx';
 import Categories from '../categories/Categories.jsx';
 import Banner from '../banner/Banner.jsx';

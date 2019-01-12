@@ -1,9 +1,14 @@
 const Sequelize = require('sequelize');
 
-const connection = new Sequelize('amazon_dev', 'root', 'password', {
+const connection = new Sequelize('navbar', 'postgres', 'password', {
   host: 'localhost',
-  dialect: 'mysql',
+  dialect: 'postgres',
   logging: false,
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  }
 });
 
 connection

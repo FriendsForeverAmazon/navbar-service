@@ -5,26 +5,29 @@
   "author": "",
   "license": "",
   "engines": {
-    "node": ">=6.13.0"
+    "node": "11.6.0"
   },
   "scripts": {
     "build": "webpack --mode development --watch",
-    "schema": "mysql -u student < server/db/schema.sql -p",
+    "schema": "mysql -u root -p < server/db/schema.sql",
     "test-server": "jest --config ./server/tests/jest.config.json --detectOpenHandles",
     "seed": "node server/db/seed.js",
     "test-react": "jest --config ./client/tests/jest.config.json",
-    "start": "nodemon server/server.js"
+    "start": "nodemon SDC-server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
+    "mongoose": "^5.4.3",
     "morgan": "^1.9.1",
     "mysql2": "^1.6.4",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "underscore": "^1.9.1",
+    "pg": "^7.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
