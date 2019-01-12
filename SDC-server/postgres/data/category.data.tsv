@@ -1,5 +1,5 @@
-electronicsdogs	dogscurrent_timestamp	current_timestamp
-clothesdogs	dogscurrent_timestamp	current_timestamp
-gamesdogs	dogscurrent_timestamp	current_timestamp
-appliancesdogs	dogscurrent_timestamp	current_timestamp
-booksdogs	dogscurrent_timestamp	current_timestamp
+electronics	NOW()	NOW()
+clothes	NOW()	NOW()
+games	NOW()	NOW()
+appliances	NOW()	NOW()
+books	NOW()	NOW()

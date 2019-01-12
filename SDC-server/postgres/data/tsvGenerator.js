@@ -13,7 +13,7 @@ const write = (stream, data) => {
 }
 
 const categories = categoryNames.map(category => { 
-  let out = `${category}dogs\tdogscurrent_timestamp\tcurrent_timestamp\n`;
+  let out = `${category}\tNOW()\tNOW()\n`;
   categoryStream.write(out);
   return out;
 });
@@ -21,17 +21,9 @@ const categories = categoryNames.map(category => {
 categories.forEach(async (category,index) => {
   for (let i = 0; i < 20; i++) {
     var streamPromise = write(productStream, 
-       `${faker.commerce.productName().toLowerCase()}\t${faker.lorem.paragraph()}\tcurrent_timestamp\tcurrent_timestamp\n`);
+       `${faker.commerce.productName().toLowerCase()}\t${faker.lorem.paragraph()}\tNOW()\tNOW()\n`);
     if (streamPromise instanceof Promise) {
       await streamPromise;
     }
   }
 });
-
-/*
-\t${index}
-, createdAt, updatedAt
-, createdAt, updatedAt
-NOW()\tNOW()
-\tNOW()\tNOW()
-*/
