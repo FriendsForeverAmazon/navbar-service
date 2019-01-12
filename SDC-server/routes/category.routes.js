@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const categoriesController = require('../controller/category.controller');
+const categoriesController = require('../postgres/controller/category.controller');
+// const categoriesController = require('../mongo/controller/category.controller');
 
 router.get('/', categoriesController.getAll);
 router.post('/create/:category', categoriesController.create);
