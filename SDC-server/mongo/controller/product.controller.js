@@ -77,18 +77,16 @@ var get = (req, res) => {
 }
 
 var create = (req, res) => {
-  var categoryParam = req.params.category;
-  var { query } = req.params;
+  var product = req.params.product;
   Category.find({
-    category: 
-      categoryParam
+    category: 'all departments'
   })
   .then(category => {
     if (category) {
       return Product.create({
         categoryId: category.id,
-        name: 
-          new RegExp(query.toLowerCase(),'g')
+        name: product,
+        description: ''
       })
     }
   })
@@ -101,20 +99,17 @@ var create = (req, res) => {
 }
 
 var update = (req, res) => {
-  var categoryParam = req.params.category;
   var oldProduct = req.params.oldProduct;
   var newProduct = req.params.newProduct;
   Category.find({
-    category: 
-      categoryParam
+    category: 'all departments'
   })
   .then(category => {
     if (category) {
       return Product.update(
-        {name: oldProduct},
+        {name: oldProduct}, 
         {
-          name: newProduct,
-          description: req.body
+          name: newProduct
         })
     }
   })
@@ -127,18 +122,15 @@ var update = (req, res) => {
 }
 
 var remove = (req, res) => {
-  var categoryParam = req.params.category;
   var { query } = req.params;
   Category.find({
-    category: 
-      categoryParam
+    category: 'all departments'
   })
   .then(category => {
     if (category) {
       return Product.deleteOne({
         categoryId: category.id,
-        name: 
-          new RegExp(query.toLowerCase(),'g')
+        name: query
       })
     }
   })
