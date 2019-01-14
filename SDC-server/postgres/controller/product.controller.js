@@ -63,7 +63,7 @@ const create = (req, res) => {
 const update = (req, res) => {
   const oldProduct = req.params.oldProduct;
   const newProduct = req.params.newProduct;
-  return Product.update(
+  Product.update(
     {
       name: newProduct,
       description: ''

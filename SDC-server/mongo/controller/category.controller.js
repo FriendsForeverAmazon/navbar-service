@@ -11,10 +11,10 @@ const getAll = (req, res) => {
 };
 
 const create = (req, res) => {
-  const { category } = req.params.category;
-  Category.create(category)
+  const category = req.params.category;
+  Category.create({category})
     .then(() => {
-      res.status(201).send();
+      res.status(201).send(`${category} added to categories.`);
     })
     .catch(err => {
       res.status(500).send({ err });
@@ -22,9 +22,9 @@ const create = (req, res) => {
 }
 
 const update = (req, res) => {
-  const { category } = req.params.category;
-  const { newCategory } = req.params.newCategory;
-  Category.updateOne(category, newCategory)
+  const category = req.params.category;
+  const newCategory = req.params.newCategory;
+  Category.updateOne({category}, {category: newCategory})
     .then(() => {
       res.status(201).send();
     })
@@ -34,7 +34,7 @@ const update = (req, res) => {
 }
 
 const remove = (req, res) => {
-  const { category } = req.params.category;
+  const category= req.params;
   Category.deleteOne(category)
     .then(() => {
       res.status(201).send();
