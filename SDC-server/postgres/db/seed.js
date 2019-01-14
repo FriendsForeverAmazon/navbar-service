@@ -7,8 +7,12 @@ connection.query(
   "COPY categories (category, \"createdAt\", \"updatedAt\") from ? DELIMITER '\t'",
   { replacements: [__dirname + '/../data/category.data.tsv'], type: sequelize.QueryTypes.SELECT }
 )
-
-connection.query(
-  "COPY products (name, description, \"createdAt\", \"updatedAt\") from ? DELIMITER '\t'",
-  { replacements: [__dirname + '/../data/product.data.tsv'], type: sequelize.QueryTypes.SELECT }
-)
+.then(() => {
+  return connection.query(
+    "COPY products (name, description, \"categoryId\", \"createdAt\", \"updatedAt\") from ? DELIMITER '\t'",
+    { replacements: [__dirname + '/../data/product.data.tsv'], type: sequelize.QueryTypes.SELECT }
+  )
+})
+.then(() => {
+  console.log('GOSH DANG YOU JUST KNOW THAT DATABASE GOT SEEDED BOI')
+})

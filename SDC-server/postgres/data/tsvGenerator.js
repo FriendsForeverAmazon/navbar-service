@@ -21,7 +21,7 @@ const categories = categoryNames.map(category => {
 categories.forEach(async (category,index) => {
   for (let i = 0; i < 20; i++) {
     var streamPromise = write(productStream, 
-       `${faker.commerce.productName().toLowerCase()}\t${faker.lorem.paragraph()}\tNOW()\tNOW()\n`);
+       `${faker.commerce.productName().toLowerCase()}\t${faker.lorem.paragraph()}\t${index}\tNOW()\tNOW()\n`);
     if (streamPromise instanceof Promise) {
       await streamPromise;
     }

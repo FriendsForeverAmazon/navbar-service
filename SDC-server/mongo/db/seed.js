@@ -15,7 +15,7 @@ Promise.all(categoryPromises)
       _.flatten(
         categories.map(category => {
           let productArray = [];
-          for(let i = 0; i < 20; i++) {
+          for(let i = 0; i < 200; i++) {
             productName = faker.commerce.productName();
             productDescription = faker.lorem.paragraph();
             productArray.push({
