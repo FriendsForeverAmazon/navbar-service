@@ -3,3 +3,5 @@ public/app.bundle.js
 styles.css
 .DS_Store
 SDC-server/data
+.csv
+.tsv

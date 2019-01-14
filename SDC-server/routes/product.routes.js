@@ -4,8 +4,8 @@ const productsController = require('../postgres/controller/product.controller');
 
 
 router.get('/:category/:query', productsController.get);
-router.post('/create/:category/:query', productsController.create);
-router.put('/update/:category/:oldProduct/:newProduct', productsController.update);
-router.delete('/delete/:category/:query', productsController.remove);
+router.post('/create/:product', productsController.create);
+router.put('/update/:oldProduct/:newProduct', productsController.update);
+router.delete('/delete/:query', productsController.remove);
 
 module.exports = router;

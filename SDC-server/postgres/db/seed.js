@@ -4,11 +4,15 @@ const { category } = require('../models/category.model.js');
 const { product } = require('../models/product.model.js');
 
 connection.query(
-  "COPY categories from ? DELIMITER ',' CSV",
-  { replacements: [__dirname + '/../data/category.data.csv'], type: sequelize.QueryTypes.SELECT }
+  "COPY categories (category, \"createdAt\", \"updatedAt\") from ? DELIMITER '\t'",
+  { replacements: [__dirname + '/../data/category.data.tsv'], type: sequelize.QueryTypes.SELECT }
 )
-
-connection.query(
-  "COPY products from ? DELIMITER ',' CSV",
-  { replacements: [__dirname + '/../data/product.data.csv'], type: sequelize.QueryTypes.SELECT }
-)
+.then(() => {
+  return connection.query(
+    "COPY products (name, description, \"categoryId\", \"createdAt\", \"updatedAt\") from ? DELIMITER '\t'",
+    { replacements: [__dirname + '/../data/product.data.tsv'], type: sequelize.QueryTypes.SELECT }
+  )
+})
+.then(() => {
+  console.log('GOSH DANG YOU JUST KNOW THAT DATABASE GOT SEEDED BOI')
+})
