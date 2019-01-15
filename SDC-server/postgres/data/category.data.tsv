@@ -1,3 +1,4 @@
+category createdAt updatedAt
 electronics	NOW()	NOW()
 clothes	NOW()	NOW()
 games	NOW()	NOW()
