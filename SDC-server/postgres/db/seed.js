@@ -9,7 +9,7 @@ connection.query(
 )
 .then(() => {
   return connection.query(
-    "COPY products (name, description, \"categoryId\", \"createdAt\", \"updatedAt\") from ? DELIMITER '\t'",
+    "COPY products (name, description, \"createdAt\", \"updatedAt\") from ? DELIMITER '\t'",
     { replacements: [__dirname + '/../data/product.data.tsv'], type: sequelize.QueryTypes.SELECT }
   )
 })
