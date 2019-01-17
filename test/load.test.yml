@@ -1,0 +1,9 @@
+config:
+  target: 'https://localhost:3003'
+  phases:
+    - duration: 60
+      arrivalRate: 20
+scenarios:
+  - flow:
+    - get:
+        url: "/products/all departments/sleek plastic ball81"

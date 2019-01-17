@@ -8,44 +8,8 @@ var get = (req, res) => {
   if (categoryParam === 'all departments') {
     Product.find({
           name: 
-            new RegExp(query.toLowerCase(),'g')
-        })
-      .then(products => {
-        res.status(200).send({ products });
-      })
-      .catch(err => {
-        res.status(500).send({ err });
-      });
-  } else {
-    Category.find({
-        category: 
-          categoryParam
-      })
-      .then(category => {
-        if (category) {
-          return Product.find({
-            categoryId: category.id,
-            name: 
-              new RegExp(query.toLowerCase(),'g')
-          })
-        }
-        return [];
-      })
-      .then(products => {
-        res.status(200).send({ products });
-      })
-      .catch(err => {
-        res.status(500).send({ err });
-      })
-  }
-  var categoryParam = req.params.category.toLowerCase();
-  var { query } = req.params
-
-  if (categoryParam === 'all departments') {
-    Product.find({
-          name: 
-            new RegExp(query.toLowerCase(),'g')
-        })
+            new RegExp(query.toLowerCase() + '.*')
+        }).limit(10)
       .then(products => {
         res.status(200).send({ products });
       })
