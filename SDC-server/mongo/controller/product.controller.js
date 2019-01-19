@@ -1,17 +1,52 @@
 var { Product } = require('../models/product.model');
 var { Category } = require('../models/category.model');
+var { cache } = require('../db/db.js');
 
 var get = (req, res) => {
   var categoryParam = req.params.category.toLowerCase();
-  var { query } = req.params
-
+  var query = req.params.query.toLowerCase();
+  
   if (categoryParam === 'all departments') {
-    Product.find({
-          name: 
-            new RegExp(query.toLowerCase() + '.*')
-        }).limit(10)
+    cache.exists(query)
+      .then(exists => {
+        if (exists) {
+          return cache.get(query);
+        } else {
+          console.log(exists);
+          return Promise.resolve(false);
+        }
+      })
       .then(products => {
-        res.status(200).send({ products });
+        if (products) {
+          res.status(200).send({ products: JSON.parse(products) });
+          return Promise.resolve(true);
+        } else {
+          return Promise.resolve(false)
+        }
+      })
+      .then(responseWasSent => {
+        if(!responseWasSent) {
+          return Product.find({name: new RegExp(`^${query}`)}).limit(5)
+        } else {
+          return Promise.resolve("Response was sent");
+        }
+      })
+      .then(products => {
+        if (products.length === 0) {
+          return Product.find({name: new RegExp(query)}).limit(5)
+        } else if (products === "Response was sent") {
+          return Promise.resolve(false);
+        } else {
+          cache.set(query, JSON.stringify(products));
+          res.status(200).send({ products });
+          return Promise.resolve(false);
+        }
+      })
+      .then(products => {
+        if(products) {
+          cache.set(query, JSON.stringify(products));
+          res.status(200).send({ products });
+        }
       })
       .catch(err => {
         res.status(500).send({ err });

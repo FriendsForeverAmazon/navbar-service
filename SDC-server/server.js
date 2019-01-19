@@ -1,5 +1,7 @@
+const newRelic = require('newrelic');
 const path = require('path');
 const express = require('express');
+const fastify = require('fastify');
 const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');

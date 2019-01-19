@@ -1,9 +1,11 @@
 config:
-  target: 'https://localhost:3003'
+  target: "http://localhost:3003/products/all departments"
   phases:
     - duration: 60
-      arrivalRate: 20
+      arrivalRate: 100
+  processor: "./generateData.js"
 scenarios:
   - flow:
+    - function: "generateRandomData"
     - get:
-        url: "/products/all departments/sleek plastic ball81"
+        url: "/{{ query }}"
