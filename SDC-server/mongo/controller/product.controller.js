@@ -82,6 +82,7 @@ var create = (req, res) => {
   })
   .then(category => {
     if (category) {
+      
       return Product.create({
         categoryId: category.id,
         name: product,
@@ -89,8 +90,9 @@ var create = (req, res) => {
       })
     }
   })
-  .then(products => {
-    res.status(200).send({ products });
+  .then(product => {
+    cache.set(product, JSON.stringify(product));
+    res.status(200).send({ product });
   })
   .catch(err => {
     res.status(500).send({ err });

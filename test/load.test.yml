@@ -1,5 +1,5 @@
 config:
-  target: "http://localhost:3003/products/all departments"
+  target: "http://localhost:3003/products/create"
   phases:
     - duration: 60
       arrivalRate: 100
@@ -7,5 +7,5 @@ config:
 scenarios:
   - flow:
     - function: "generateRandomData"
-    - get:
+    - post:
         url: "/{{ query }}"
