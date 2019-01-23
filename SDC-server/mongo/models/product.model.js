@@ -9,5 +9,7 @@ const ProductSchema = new mongoose.Schema(
     categoryId: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'}
   });
   
+ProductSchema.index({name:1});
+
 const Product = connection.model('Product', ProductSchema);
 module.exports = { Product };

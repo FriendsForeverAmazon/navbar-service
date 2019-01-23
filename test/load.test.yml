@@ -1,11 +1,11 @@
 config:
-  target: "http://localhost:3003/products/create"
+  target: "http://ec2-3-87-195-51.compute-1.amazonaws.com:3003/products/all departments"
   phases:
     - duration: 60
-      arrivalRate: 100
+      arrivalRate: 1000
   processor: "./generateData.js"
 scenarios:
   - flow:
     - function: "generateRandomData"
-    - post:
+    - get:
         url: "/{{ query }}"
