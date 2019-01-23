@@ -28,7 +28,7 @@ class Search extends React.Component {
     document.addEventListener('mousedown', this.handleOutsideClick, false);
 
     // Fetch categories
-    fetch('http://ec2-3-87-195-51.compute-1.amazonaws.com:3003/categories')
+    fetch('http://3.87.195.51:3003/categories')
       .then(resData => resData.json())
       .then((data) => {
         const newCategories = data.categories.map(
@@ -53,7 +53,7 @@ class Search extends React.Component {
   onSubmit(query) {
     // Query server
     if (query !== '') {
-      fetch(`http://ec2-3-87-195-51.compute-1.amazonaws.com:3003/products/${this.state.selectValue}/${query}`)
+      fetch(`http://3.87.195.51:3003/products/${this.state.selectValue}/${query}`)
         .then(resData => resData.json())
         .then((data) => {
           console.log(data);
