@@ -1,0 +1,11 @@
+config:
+  target: "http://ec2-3-87-195-51.compute-1.amazonaws.com:3003/products/all departments"
+  phases:
+    - duration: 60
+      arrivalRate: 1000
+  processor: "./generateData.js"
+scenarios:
+  - flow:
+    - function: "generateRandomData"
+    - get:
+        url: "/{{ query }}"

@@ -4,6 +4,10 @@ const { connection } = require('../db/db');
 const { Category } = require('./category.model');
 
 const Product = connection.define('product', {
+  index: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   name: {
     type: Sequelize.STRING,
     allowNull: false,

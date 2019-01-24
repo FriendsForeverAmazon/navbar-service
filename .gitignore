@@ -1,7 +1,6 @@
 node_modules/
-public/app.bundle.js
-styles.css
 .DS_Store
 SDC-server/data
 /SDC-server/postgres/data/category.data.csv
 /SDC-server/postgres/data/product.data.tsv
+newrelic.config.js

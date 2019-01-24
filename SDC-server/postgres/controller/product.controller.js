@@ -13,6 +13,7 @@ const get = (req, res) => {
           [Sequelize.Op.like]: `%${query.toLowerCase()}%`,
         },
       },
+      limit: 5
     })
       .then((products) => {
         res.status(200).send({ products });
