@@ -7,15 +7,7 @@ var get = (req, res) => {
   var query = req.params.query.toLowerCase();
   
   if (categoryParam === 'all departments') {
-    cache.exists(query)
-      .then(exists => {
-        if (exists) {
-          return cache.get(query);
-        } else {
-          console.log(exists);
-          return Promise.resolve(false);
-        }
-      })
+    cache.get(query)
       .then(products => {
         if (products) {
           res.status(200).send({ products: JSON.parse(products) });
@@ -82,7 +74,6 @@ var create = (req, res) => {
   })
   .then(category => {
     if (category) {
-      
       return Product.create({
         categoryId: category.id,
         name: product,
