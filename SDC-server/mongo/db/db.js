@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 var Redis = require('ioredis');
-const url = "mongodb://34.238.49.225:27017/";
-var cache = new Redis("redis://3.92.213.254:6379/");
+const url = "mongodb://52.201.225.62:27017/";
+var cache = new Redis("redis://54.86.203.33:6379/");
 
 const connection = mongoose.createConnection(url,{dbName:'navbar'});
 
