@@ -53,7 +53,7 @@ class Search extends React.Component {
   onSubmit(query) {
     // Query server
     if (query !== '') {
-      fetch(`http://3.92.187.92:3003/products/${this.state.selectValue}/${query}`)
+      fetch(`http://localhost:3003/products/${this.state.selectValue}/${query}`)
         .then(resData => resData.json())
         .then((data) => {
           console.log(data);
